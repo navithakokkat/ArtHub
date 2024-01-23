@@ -1,0 +1,75 @@
+html
+	head
+		title= Username
+		link(rel="stylesheet" href="/css/styles.css")
+		
+	body
+		include ../partials/header
+		script(src="/js/client.js")
+		br
+		br
+		p= "Username: " + Username
+		if Me
+			h3 Account Type
+			p#roleText= "Current account type: " + UserRole
+			if UserRole == "patron"
+				button#changeRoleBtn(type="button", onclick=`changeRole('${UserID}')`) Switch to Artist
+			else
+				button#changeRoleBtn(type="button", onclick=`changeRole('${UserID}')`) Switch to Patron		
+			h3 Following
+			if Followings.length > 0
+				ul
+					each following in Followings
+						a(href=`/users/${following._id}`)= `${following.Username}`
+						br
+			else
+				p Not following anyone yet
+				br
+			h3 Followers
+			if Followers.length > 0
+				ul
+					each follower in Followers
+						a(href=`/users/${follower._id}`)= `${follower.Username}`
+						br
+			else
+				p No followers yet
+				br
+			h3 Notifications
+			if Notifications.length > 0
+				ul
+					each notification in Notifications
+						li= notification
+						br
+			else
+				p No notifications
+				br
+			h3 Enrolled Workshops
+			if EnrolledWorkshops.length > 0
+				ul
+					each enrolledWorkshop in EnrolledWorkshops
+						a(href=`/workshops/${enrolledWorkshop._id}`)= `${enrolledWorkshop.Title}`
+						br
+			else
+				p Not enrolled in any workshops
+				br
+		else if followText
+			button#followBtn(type="button", onclick=`follow('${UserID}')`) Follow
+		else
+			button#followBtn(type="button", onclick=`follow('${UserID}')`) Unfollow
+		h3 Artworks
+		if Artworks.length > 0
+			each artwork in Artworks
+				p#artworkTitle= artwork.Title 
+				a(href="/artworks/" + artwork["_id"])
+					img(src=artwork.Poster, alt=artwork.Title)
+				br
+		else 
+			p No artworks yet
+			br
+		h3 Workshops
+		if Workshops.length > 0
+			each workshop in Workshops
+				a(href=`/workshops/${workshop._id}`)= `${workshop.Title}`
+				br
+		else
+			p No workshops yet

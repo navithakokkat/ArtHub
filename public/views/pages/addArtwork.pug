@@ -1,0 +1,25 @@
+html
+	head
+		title Add Artwork
+		link(rel="stylesheet" href="/css/styles.css")
+	
+	body
+		include ../partials/header
+		script(src="/js/client.js")
+		h1 Add an Artwork
+		
+		p Enter your artwork information into the form below and submit it to upload your artwork.
+		
+		p Title: 
+			input#title(type="textbox")
+		p Year: 
+			input#year(type="textbox")
+		p Category: 
+			input#category(type="textbox")
+		p Medium: 
+			input#medium(type="textbox")
+		p= "Description (Optional): "
+			input#description(type="textbox")
+		p Link: 
+			input#poster(type="textbox")
+		button#uploadArtwork(type="button", onclick = "uploadArtwork()") Upload 

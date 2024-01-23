@@ -1,0 +1,17 @@
+html
+	head
+		if obj.liked
+			title= "Liked Artworks"
+		else
+			title= "Reviewed Artworks"
+		link(rel="stylesheet" href="/css/styles.css")
+		
+	body
+		include ../partials/header
+		script(src="/js/client.js")
+		if obj.liked
+			h1 Liked Artworks
+		else
+			h1 Reviewed Artworks
+
+		#likedArtworksContainer

@@ -1,0 +1,15 @@
+html
+	head
+		title Add Workshop
+		link(rel="stylesheet" href="/css/styles.css")
+	
+	body
+		include ../partials/header
+		script(src="/js/client.js")
+		h1 Add a Workshop to Host
+		
+		p Enter the name of your workshop into the form below and submit it to create a new workshop.
+		
+		p Title: 
+			input#title(type="textbox")
+		button#createWorkshop(type="button", onclick = "createWorkshop()") Create

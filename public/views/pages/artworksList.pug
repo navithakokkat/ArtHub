@@ -1,0 +1,7 @@
+
+
+each artwork in artworks
+		p#artworkTitle=artwork.Title
+		a(href="/artworks/" + artwork["_id"])
+			img(src=artwork.Poster, alt=artwork.Title)
+		br

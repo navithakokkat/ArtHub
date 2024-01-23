@@ -1,0 +1,44 @@
+html
+	head
+		title= artwork.Title
+		link(rel="stylesheet" href="/css/styles.css")
+		
+	body
+		include ../partials/header
+		script(src="/js/client.js")
+		br
+		br
+		img(src=artwork.Poster, alt=artwork.Title)
+		p= "Title: " + artwork.Title
+		p
+			span Artist: 
+			a(href=`/users/${artist._id}`)= `${artist.Username}`
+		p= "Year: " + artwork.Year
+		p= "Category: "
+			a(href=`/artworkSearch?category=${artwork.Category}`) #{artwork.Category}
+		p= "Medium: "
+			a(href=`/artworkSearch?medium=${artwork.Medium}`) #{artwork.Medium}
+		if artwork.Description == ""
+			p= "Description: No description"
+		else
+			p= "Description: " + artwork.Description
+		p#likesText Likes: #{artwork.Likes}
+		if likeText
+			button#likeBtn(type="button", onclick=`like('${_id}')`) Like
+		else
+			button#likeBtn(type="button", onclick=`like('${_id}')`) Unlike
+		p Leave a Review: 
+		textarea(id="review")
+		br
+		button(type="button", onclick=`review('${_id}')`) Post
+		br
+
+		if artwork.Reviews.length > 0
+			ul
+				each review in artwork.Reviews
+					li= review
+					button(type="button", onclick=`deleteReview('${_id}', '${review}')`) Delete
+		else
+			p No reviews yet
+
+

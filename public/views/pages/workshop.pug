@@ -1,0 +1,29 @@
+html
+	head
+		title= Title
+		link(rel="stylesheet" href="/css/styles.css")
+		
+	body
+		include ../partials/header
+		script(src="/js/client.js")
+		br
+		br
+		p= "Title: " + Title
+		p
+			span Host: 
+			a(href=`/users/${Host._id}`)= `${Host.Username}`
+		if !Me
+			if enrollText
+				button#enrollBtn(type="button", onclick=`enroll()`) Enroll
+			else
+				button#enrollBtn(type="button", onclick=`enroll()`) Unenroll
+
+		br
+		h3 Participants
+		if EnrolledUsers.length > 0 
+			ul
+				each user in EnrolledUsers 
+					a(href=`/users/${user._id}`)= `${user.Username}` 
+					br
+		else
+			p No participants yet 

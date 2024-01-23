@@ -1,0 +1,18 @@
+html {
+    min-height: 100%;
+    background-image: linear-gradient(rgb(253, 221, 241), rgb(141, 184, 186));
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    height: auto;
+    border-color: rgb(100, 66, 16);
+    border-width: 15px;
+    border-style: outset;
+}
+
+#artworkTitle {
+    text-align: center;
+}

@@ -1,0 +1,37 @@
+html
+	head
+		title Artwork Search
+		link(rel="stylesheet" href="/css/styles.css")
+	
+	body
+		include ../partials/header
+		script(src="/js/client.js")
+		h1 Artwork Search
+		
+		p Enter data into the filter form below and hit refresh to find matching artwork.
+		
+		p Title: 
+			input#title(type="textbox")
+		p Artist: 
+			input#artist(type="textbox")
+		p Category: 
+			input#category(type="textbox")
+		p Medium: 
+			input#medium(type="textbox")
+		button#find(type="button", onclick = "refreshArtworks()") Find 
+
+		div#results
+
+		script.
+			window.onload = function() {
+				const urlParams = new URLSearchParams(window.location.search);
+				const category = urlParams.get('category');
+				const medium = urlParams.get('medium');
+				if (category) {
+					document.getElementById('category').value = category;
+				}
+				if (medium) {
+					document.getElementById('medium').value = medium;
+				}
+				refreshArtworks();
+			}

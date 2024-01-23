@@ -1,0 +1,19 @@
+head
+    title Home 
+    link(rel="stylesheet" href="/css/styles.css")
+body
+    br 
+    h1 Welcome to Artistry Central! 
+    h2 Login or Register 
+    div#display
+        label() Username  
+        input#username(type="text")
+        br
+        br
+        label() Password  
+        input#password(type="text")
+        br
+        br
+        button(type="button", onclick = "login()") Login  
+        button(type="button", onclick = "register()") Register
+    script(src="/js/client.js")
